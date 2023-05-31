@@ -25,7 +25,6 @@ const App = () => {
     console.timeEnd("USE loaded");
 
     setState(produce((draft) => (draft.use = use)));
-    ev.currentTarget.textContent = "Loaded!";
   };
 
   const addEntry = () =>
@@ -91,9 +90,9 @@ const App = () => {
     <>
       <h1>Tensorflow.js USE Embeddings</h1>
 
-      <fieldset disabled={state.use !== null} style="display: contents">
-        <button onClick={loadTfjs}>Load tfjs and USE</button>
-      </fieldset>
+      <button onClick={loadTfjs} disabled={state.use !== null}>
+        {state.use === null ? "Load tfjs and USE" : "Loaded!"}
+      </button>
       {" | "}
       <fieldset disabled={state.use === null} style="display: contents">
         <button onClick={addEntry}>Add entry</button>
